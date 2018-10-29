@@ -79,8 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/selector_btn_up"/>
-    <com.archermind.airconditioner.PickerView
-        android:id="@+id/pv"
+    <com.archermind.airconditioner.LeftPickerView
+        android:id="@+id/left_pv"
         app:textSize="86dp"
         android:layout_width="200dp"
         android:layout_height="match_parent"
@@ -95,6 +95,43 @@
         android:background="@drawable/selector_btn_down"/>
 </LinearLayout>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#8E8E8E"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/btn_right_ac_temperature_up"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_btn_up"/>
+            <com.archermind.airconditioner.RightPickerView
+                android:id="@+id/right_pv"
+                app:textSize="86dp"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                />
+            <ImageButton
+                android:id="@+id/btn_right_ac_temperature_down"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_btn_down"/>
+        </LinearLayout>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ico_wendu"/>
     </LinearLayout>
 
 

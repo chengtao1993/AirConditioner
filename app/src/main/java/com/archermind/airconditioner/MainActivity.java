@@ -9,9 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener{
-    private ImageButton btnClose,btnAc,btnXunhuan,btnQfdcw,btnHcc,btnLeftAcTemperatureUp,btnLeftAcTemperatureDown;
-    private PickerView aCpickerView;
-    List<String> temperatureData;
+    private ImageButton btnClose,btnAc,btnXunhuan,btnQfdcw,btnHcc,
+            btnLeftAcTemperatureUp,btnLeftAcTemperatureDown,
+            btnRightAcTemperatureUp,btnRightAcTemperatureDown;
+    private LeftPickerView aCLeftPickerView;
+    private  RightPickerView aCRightPickerView;
+
+    List<String> leftTemperatureData,rightTemperatureData;
+
 
 
     @Override
@@ -26,27 +31,42 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnXunhuan = findViewById(R.id.btn_xunhuan);
         btnQfdcw = findViewById(R.id.btn_qfdcw);
         btnHcc = findViewById(R.id.btn_hcc);
-        aCpickerView = findViewById(R.id.pv);
+
+        aCLeftPickerView = findViewById(R.id.left_pv);
         btnLeftAcTemperatureUp = findViewById(R.id.btn_left_ac_temperature_up);
         btnLeftAcTemperatureDown = findViewById(R.id.btn_left_ac_temperature_down);
+
+        aCRightPickerView = findViewById(R.id.right_pv);
+        btnRightAcTemperatureUp = findViewById(R.id.btn_right_ac_temperature_up);
+        btnRightAcTemperatureDown = findViewById(R.id.btn_right_ac_temperature_down);
 
         btnClose.setOnClickListener(this);
         btnAc.setOnClickListener(this);
         btnXunhuan.setOnClickListener(this);
         btnQfdcw.setOnClickListener(this);
         btnHcc.setOnClickListener(this);
+
         btnLeftAcTemperatureUp.setOnClickListener(this);
         btnLeftAcTemperatureDown.setOnClickListener(this);
+
+        btnRightAcTemperatureUp.setOnClickListener(this);
+        btnRightAcTemperatureDown.setOnClickListener(this);
 
 
         /**
          * 初始化空调温度
          */
-        temperatureData = new ArrayList<>();
+        leftTemperatureData = new ArrayList<>();
         for(int i =31;i>15;i--){
-            temperatureData.add(i+"°");
+            leftTemperatureData.add(i+"°");
         }
-        aCpickerView.setData(temperatureData);
+        aCLeftPickerView.setData(leftTemperatureData);
+
+        rightTemperatureData = new ArrayList<>();
+        for(int i =31;i>15;i--){
+            rightTemperatureData.add(i+"°");
+        }
+        aCRightPickerView.setData(rightTemperatureData);
     }
 
     @Override
@@ -88,13 +108,24 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn_left_ac_temperature_up:
-                if(aCpickerView.getPosition()>0){
-                    aCpickerView.setPosition(aCpickerView.getPosition()-1);
+                if(aCLeftPickerView.getPosition()>0){
+                    aCLeftPickerView.setPosition(aCLeftPickerView.getPosition()-1);
                 }
                 break;
             case R.id.btn_left_ac_temperature_down:
-                if(aCpickerView.getPosition()<temperatureData.size()-1){
-                    aCpickerView.setPosition(aCpickerView.getPosition()+1);
+                if(aCLeftPickerView.getPosition()<leftTemperatureData.size()-1){
+                    aCLeftPickerView.setPosition(aCLeftPickerView.getPosition()+1);
+                }
+                break;
+            case R.id.btn_right_ac_temperature_up:
+                if(aCRightPickerView.getPosition()>0){
+                    aCRightPickerView.setPosition(aCRightPickerView.getPosition()-1);
+                }
+                break;
+
+            case R.id.btn_right_ac_temperature_down:
+                if(aCRightPickerView.getPosition()<rightTemperatureData.size()-1){
+                    aCRightPickerView.setPosition(aCRightPickerView.getPosition()+1);
                 }
                 break;
         }

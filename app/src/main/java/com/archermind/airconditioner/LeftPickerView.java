@@ -2,10 +2,7 @@ package com.archermind.airconditioner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 
-public class PickerView extends ScrollView {
+public class LeftPickerView extends ScrollView {
 
     private Context context;
     /**
@@ -56,27 +52,27 @@ public class PickerView extends ScrollView {
     public static int position, tempPosition = -1;
     private int scrollY;
 
-    public PickerView(Context context) {
+    public LeftPickerView(Context context) {
         this(context, null);
     }
 
-    public PickerView(Context context, AttributeSet attrs) {
+    public LeftPickerView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public PickerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LeftPickerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
         /**
          * 这句话设置ScrollView滑动到极限的时候不显示提示（就是那个阴影）
          */
         setOverScrollMode(OVER_SCROLL_NEVER);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PickerView, defStyleAttr, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LeftPickerView, defStyleAttr, 0);
         try {
             /**
              * 获取到用户设置的字体大小,默认25
              */
-            mTextSize = a.getDimension(R.styleable.PickerView_textSize, 25);
+            mTextSize = a.getDimension(R.styleable.LeftPickerView_textSize, 25);
             /**
              * 获取到屏幕的密度来设置TextView的高度
              */
@@ -256,8 +252,8 @@ public class PickerView extends ScrollView {
         post(new Runnable() {
             @Override
             public void run() {
-                Log.d("hct","289position = "+PickerView.this.position * mTextHeight);
-                smoothScrollTo(0, PickerView.this.position * mTextHeight);
+                Log.d("hct","289position = "+ LeftPickerView.this.position * mTextHeight);
+                smoothScrollTo(0, LeftPickerView.this.position * mTextHeight);
             }
         });
     }
