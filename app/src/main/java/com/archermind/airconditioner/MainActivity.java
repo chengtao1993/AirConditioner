@@ -3,6 +3,7 @@ package com.archermind.airconditioner;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
             btnRightAcTemperatureUp,btnRightAcTemperatureDown;
     private LeftPickerView aCLeftPickerView;
     private  RightPickerView aCRightPickerView;
-
     List<String> leftTemperatureData,rightTemperatureData;
+    private Button btnSyncTemperature;
 
 
 
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnXunhuan = findViewById(R.id.btn_xunhuan);
         btnQfdcw = findViewById(R.id.btn_qfdcw);
         btnHcc = findViewById(R.id.btn_hcc);
+        btnSyncTemperature = findViewById(R.id.btn_sync_temperature);
 
         aCLeftPickerView = findViewById(R.id.left_pv);
         btnLeftAcTemperatureUp = findViewById(R.id.btn_left_ac_temperature_up);
@@ -45,6 +47,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnXunhuan.setOnClickListener(this);
         btnQfdcw.setOnClickListener(this);
         btnHcc.setOnClickListener(this);
+        btnSyncTemperature.setOnClickListener(this);
 
         btnLeftAcTemperatureUp.setOnClickListener(this);
         btnLeftAcTemperatureDown.setOnClickListener(this);
@@ -126,6 +129,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             case R.id.btn_right_ac_temperature_down:
                 if(aCRightPickerView.getPosition()<rightTemperatureData.size()-1){
                     aCRightPickerView.setPosition(aCRightPickerView.getPosition()+1);
+                }
+                break;
+            case R.id.btn_sync_temperature:
+                if(btnSyncTemperature.isSelected()){
+                    btnSyncTemperature.setSelected(false);
+                }else {
+                    btnSyncTemperature.setSelected(true);
                 }
                 break;
         }

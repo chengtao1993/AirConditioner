@@ -54,7 +54,11 @@
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="#00ff00"></LinearLayout>
+        android:background="#00ff00">
+        
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="70dp"
@@ -93,8 +97,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_btn_down"/>
-</LinearLayout>
 
+</LinearLayout>
+        <Button
+            android:id="@+id/btn_sync_temperature"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#564564"
+            android:paddingStart="25dp"
+            android:drawableLeft="@drawable/selector_btn_lianjie"
+            />
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
