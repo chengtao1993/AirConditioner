@@ -2,7 +2,6 @@ package com.archermind.airconditioner;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -38,13 +37,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnHcc.setOnClickListener(this);
         btnLeftAcTemperatureUp.setOnClickListener(this);
         btnLeftAcTemperatureDown.setOnClickListener(this);
-       aCpickerView.getPosition();
+
 
         /**
          * 初始化空调温度
          */
         temperatureData = new ArrayList<>();
-        for(int i =31;i>16;i--){
+        for(int i =31;i>15;i--){
             temperatureData.add(i+"°");
         }
         aCpickerView.setData(temperatureData);
@@ -89,10 +88,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn_left_ac_temperature_up:
-                aCpickerView.setPosition(aCpickerView.getPosition()-1);
+                if(aCpickerView.getPosition()>0){
+                    aCpickerView.setPosition(aCpickerView.getPosition()-1);
+                }
                 break;
             case R.id.btn_left_ac_temperature_down:
-                aCpickerView.setPosition(aCpickerView.getPosition()+1);
+                if(aCpickerView.getPosition()<temperatureData.size()-1){
+                    aCpickerView.setPosition(aCpickerView.getPosition()+1);
+                }
                 break;
         }
     }
