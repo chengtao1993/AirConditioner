@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp">
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:background="@drawable/selector_btn_close"/>
+        <ImageButton
+            android:id="@+id/btn_ac"
+            android:padding="200dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:background="@drawable/selector_btn_ac"/>
+        <ImageButton
+            android:id="@+id/btn_xunhuan"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:background="@drawable/selector_btn_xunhuan"/>
+        <ImageButton
+            android:id="@+id/btn_qfdcw"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:background="@drawable/selector_btn_qfdcw"/>
+        <ImageButton
+            android:id="@+id/btn_hcc"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
+            android:background="@drawable/selector_btn_hcc"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="560dp"
+        android:background="#ff00ff"></LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#00ff00"></LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#000000">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ico_wendu"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#8E8E8E"
+    android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/btn_left_ac_temperature_up"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/selector_btn_up"/>
+    <com.archermind.airconditioner.PickerView
+        android:id="@+id/pv"
+        app:textSize="86dp"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        />
+    <ImageButton
+        android:id="@+id/btn_left_ac_temperature_down"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_btn_down"/>
+</LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
