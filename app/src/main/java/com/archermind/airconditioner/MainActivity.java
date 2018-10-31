@@ -12,11 +12,27 @@ import java.util.List;
 public class MainActivity extends Activity implements View.OnClickListener{
     private ImageButton btnClose,btnAc,btnXunhuan,btnQfdcw,btnHcc,
             btnLeftAcTemperatureUp,btnLeftAcTemperatureDown,
-            btnRightAcTemperatureUp,btnRightAcTemperatureDown;
+            btnRightAcTemperatureUp,btnRightAcTemperatureDown,
+            btnLeftSeatHeat,btnLeftSeatVentilation,
+            btnRightSeatHeat,btnRightSeatVentilation,
+            btnAuto;
     private LeftPickerView aCLeftPickerView;
     private  RightPickerView aCRightPickerView;
     List<String> leftTemperatureData,rightTemperatureData;
     private Button btnSyncTemperature;
+    public static int[] icon_left_seat_heat={R.drawable.ico_left_heat_a,
+            R.drawable.ico_left_heat_b,R.drawable.ico_left_heat_c,R.drawable.ico_left_heat_d};
+    public static int[] icon_left_seat_ventilation={R.drawable.ico_left_ventilation_a,
+            R.drawable.ico_left_ventilation_b,R.drawable.ico_left_ventilation_c,R.drawable.ico_left_ventilation_d};
+    public static int[] icon_right_seat_heat={R.drawable.ico_right_heat_a,
+            R.drawable.ico_right_heat_b,R.drawable.ico_right_heat_c,R.drawable.ico_right_heat_d};
+    public static int[] icon_right_seat_ventilation={R.drawable.ico_right_ventilation_a,
+            R.drawable.ico_right_ventilation_b,R.drawable.ico_right_ventilation_c,R.drawable.ico_right_ventilation_d};
+    private static int LEFT_SEAT_HEAT_ICON_INDEX = 1;
+    private static int LEFT_SEAT_VENTILATION_ICON_INDEX = 1;
+    private static int RIGHT_SEAT_HEAT_ICON_INDEX = 1;
+    private static int RIGHT_SEAT_ENTILATION_ICON_INDEX = 1;
+
 
 
 
@@ -42,6 +58,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnRightAcTemperatureUp = findViewById(R.id.btn_right_ac_temperature_up);
         btnRightAcTemperatureDown = findViewById(R.id.btn_right_ac_temperature_down);
 
+        btnLeftSeatHeat = findViewById(R.id.btn_left_seat_heat);
+        btnLeftSeatVentilation = findViewById(R.id.btn_left_seat_ventilation);
+        btnAuto = findViewById(R.id.btn_auto);
+        btnRightSeatHeat = findViewById(R.id.btn_right_seat_heat);
+        btnRightSeatVentilation = findViewById(R.id.btn_right_seat_ventilation);
+
         btnClose.setOnClickListener(this);
         btnAc.setOnClickListener(this);
         btnXunhuan.setOnClickListener(this);
@@ -54,6 +76,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         btnRightAcTemperatureUp.setOnClickListener(this);
         btnRightAcTemperatureDown.setOnClickListener(this);
+
+        btnLeftSeatHeat.setOnClickListener(this);
+        btnLeftSeatVentilation.setOnClickListener(this);
+        btnAuto.setOnClickListener(this);
+        btnRightSeatHeat.setOnClickListener(this);
+        btnRightSeatVentilation.setOnClickListener(this);
 
 
         /**
@@ -136,6 +164,37 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     btnSyncTemperature.setSelected(false);
                 }else {
                     btnSyncTemperature.setSelected(true);
+                }
+                break;
+
+            case R.id.btn_left_seat_heat:
+                btnLeftSeatHeat.setBackgroundResource(icon_left_seat_heat[LEFT_SEAT_HEAT_ICON_INDEX]);
+                LEFT_SEAT_HEAT_ICON_INDEX++;
+                if(LEFT_SEAT_HEAT_ICON_INDEX > icon_left_seat_heat.length-1){
+                    LEFT_SEAT_HEAT_ICON_INDEX = 0;
+                }
+                break;
+            case R.id.btn_left_seat_ventilation:
+                btnLeftSeatVentilation.setBackgroundResource(icon_left_seat_ventilation[LEFT_SEAT_VENTILATION_ICON_INDEX]);
+                LEFT_SEAT_VENTILATION_ICON_INDEX++;
+                if(LEFT_SEAT_VENTILATION_ICON_INDEX > icon_left_seat_ventilation.length-1 ){
+                    LEFT_SEAT_VENTILATION_ICON_INDEX = 0;
+                }
+                break;
+            case R.id.btn_auto:
+                break;
+            case R.id.btn_right_seat_heat:
+                btnRightSeatHeat.setBackgroundResource(icon_right_seat_heat[RIGHT_SEAT_HEAT_ICON_INDEX]);
+                RIGHT_SEAT_HEAT_ICON_INDEX++;
+                if(RIGHT_SEAT_HEAT_ICON_INDEX > icon_right_seat_heat.length-1){
+                    RIGHT_SEAT_HEAT_ICON_INDEX = 0;
+                }
+                break;
+            case R.id.btn_right_seat_ventilation:
+                btnRightSeatVentilation.setBackgroundResource(icon_right_seat_ventilation[RIGHT_SEAT_ENTILATION_ICON_INDEX]);
+                RIGHT_SEAT_ENTILATION_ICON_INDEX++;
+                if(RIGHT_SEAT_ENTILATION_ICON_INDEX > icon_right_seat_ventilation.length-1){
+                    RIGHT_SEAT_ENTILATION_ICON_INDEX = 0;
                 }
                 break;
         }
