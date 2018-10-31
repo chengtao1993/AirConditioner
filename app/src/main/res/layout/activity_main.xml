@@ -46,42 +46,53 @@
             android:background="@drawable/selector_btn_hcc"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#ff00ff"></LinearLayout>
     <LinearLayout
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
         >
 
         <ImageButton
             android:id="@+id/btn_left_seat_heat"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:background="@drawable/ico_left_heat_a"/>
         <ImageButton
             android:id="@+id/btn_left_seat_ventilation"
-            android:padding="200dp"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:background="@drawable/ico_left_ventilation_a"/>
         <ImageButton
             android:id="@+id/btn_auto"
-            android:layout_width="353dp"
-            android:layout_height="272dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:background="@drawable/selector_btn_auto"/>
         <ImageButton
+            android:id="@+id/btn_auto_off"
+            android:layout_marginLeft="50dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:visibility="gone"
+            android:background="@drawable/selector_btn_auto_off"/>
+        <ImageButton
             android:id="@+id/btn_right_seat_ventilation"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:background="@drawable/ico_right_ventilation_a"/>
         <ImageButton
             android:id="@+id/btn_right_seat_heat"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_marginLeft="50dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:background="@drawable/ico_right_heat_a"/>
 
 
@@ -89,10 +100,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="#000000">
         <ImageView
             android:layout_width="20dp"

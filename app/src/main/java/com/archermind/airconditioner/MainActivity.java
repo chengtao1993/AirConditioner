@@ -15,7 +15,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             btnRightAcTemperatureUp,btnRightAcTemperatureDown,
             btnLeftSeatHeat,btnLeftSeatVentilation,
             btnRightSeatHeat,btnRightSeatVentilation,
-            btnAuto;
+            btnAuto,btnAutoOff;
     private LeftPickerView aCLeftPickerView;
     private  RightPickerView aCRightPickerView;
     List<String> leftTemperatureData,rightTemperatureData;
@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnLeftSeatHeat = findViewById(R.id.btn_left_seat_heat);
         btnLeftSeatVentilation = findViewById(R.id.btn_left_seat_ventilation);
         btnAuto = findViewById(R.id.btn_auto);
+        btnAutoOff = findViewById(R.id.btn_auto_off);
         btnRightSeatHeat = findViewById(R.id.btn_right_seat_heat);
         btnRightSeatVentilation = findViewById(R.id.btn_right_seat_ventilation);
 
@@ -80,6 +81,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnLeftSeatHeat.setOnClickListener(this);
         btnLeftSeatVentilation.setOnClickListener(this);
         btnAuto.setOnClickListener(this);
+        btnAutoOff.setOnClickListener(this);
         btnRightSeatHeat.setOnClickListener(this);
         btnRightSeatVentilation.setOnClickListener(this);
 
@@ -182,6 +184,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 }
                 break;
             case R.id.btn_auto:
+                btnAuto.setVisibility(View.GONE);
+                btnAutoOff.setVisibility(View.VISIBLE);
+                break;
+
+            case R.id.btn_auto_off:
+                btnAutoOff.setVisibility(View.GONE);
+                btnAuto.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_right_seat_heat:
                 btnRightSeatHeat.setBackgroundResource(icon_right_seat_heat[RIGHT_SEAT_HEAT_ICON_INDEX]);
