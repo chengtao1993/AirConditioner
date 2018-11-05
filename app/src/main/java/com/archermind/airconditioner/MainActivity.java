@@ -1,10 +1,14 @@
 package com.archermind.airconditioner;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +20,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             btnLeftSeatHeat,btnLeftSeatVentilation,
             btnRightSeatHeat,btnRightSeatVentilation,
             btnAuto,btnAutoOff;
+           private BlowViewItem btnBlowToTheHead,btnBlowToTheWindow,btnBlowToTheFoot;
     private LeftPickerView aCLeftPickerView;
     private  RightPickerView aCRightPickerView;
     List<String> leftTemperatureData,rightTemperatureData;
@@ -32,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static int LEFT_SEAT_VENTILATION_ICON_INDEX = 1;
     private static int RIGHT_SEAT_HEAT_ICON_INDEX = 1;
     private static int RIGHT_SEAT_ENTILATION_ICON_INDEX = 1;
+    private AnimationDrawable blowHeadAnimation,blowWindowAnimation,blowFootAnimation;
 
 
 
@@ -65,6 +71,14 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnRightSeatHeat = findViewById(R.id.btn_right_seat_heat);
         btnRightSeatVentilation = findViewById(R.id.btn_right_seat_ventilation);
 
+        btnBlowToTheHead = findViewById(R.id.blow_to_the_head);
+        btnBlowToTheWindow = findViewById(R.id.blow_to_the_window);
+        btnBlowToTheFoot = findViewById(R.id.blow_to_the_foot);
+
+        blowHeadAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.blow_head_animation);
+        blowWindowAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.blow_window_animation);
+        blowFootAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.blow_foot_animation);
+
         btnClose.setOnClickListener(this);
         btnAc.setOnClickListener(this);
         btnXunhuan.setOnClickListener(this);
@@ -84,6 +98,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnAutoOff.setOnClickListener(this);
         btnRightSeatHeat.setOnClickListener(this);
         btnRightSeatVentilation.setOnClickListener(this);
+
+        btnBlowToTheHead.setOnClickListener  (this);
+        btnBlowToTheWindow.setOnClickListener(this);
+        btnBlowToTheFoot.setOnClickListener(this);
+
 
 
         /**
@@ -205,6 +224,40 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 if(RIGHT_SEAT_ENTILATION_ICON_INDEX > icon_right_seat_ventilation.length-1){
                     RIGHT_SEAT_ENTILATION_ICON_INDEX = 0;
                 }
+                break;
+
+            case R.id.blow_to_the_head:
+                if(btnBlowToTheHead.isSelected()){
+                    btnBlowToTheHead.setSelected(false);
+                    blowHeadAnimation.stop();
+                    btnBlowToTheHead.setBackground(getDrawable(R.drawable.up_d));
+                }else {
+                    btnBlowToTheHead.setSelected(true);
+                    btnBlowToTheHead.setBackground(blowHeadAnimation);
+                    blowHeadAnimation.start();
+                }
+                break;
+            case R.id.blow_to_the_window:
+                if(btnBlowToTheWindow.isSelected()){
+                    btnBlowToTheWindow.setSelected(false);
+                    blowWindowAnimation.stop();
+                    btnBlowToTheWindow.setBackground(getDrawable(R.drawable.medium_d));
+                }else {
+                    btnBlowToTheWindow.setSelected(true);
+                    btnBlowToTheWindow.setBackground(blowWindowAnimation);
+                    blowWindowAnimation.start();
+                }
+                break;
+            case R.id.blow_to_the_foot:
+               if(btnBlowToTheFoot.isSelected()){
+                   btnBlowToTheFoot.setSelected(false);
+                   blowFootAnimation.stop();
+                   btnBlowToTheFoot.setBackground(getDrawable(R.drawable.down_d));
+               }else {
+                   btnBlowToTheFoot.setSelected(true);
+                   btnBlowToTheFoot.setBackground(blowFootAnimation);
+                   blowFootAnimation.start();
+               }
                 break;
         }
     }
