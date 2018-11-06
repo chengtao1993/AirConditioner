@@ -159,7 +159,7 @@ public class LeftPickerView extends ScrollView {
          * 计算出当前在两条线里的position
          */
         position = t  / mTextHeight ;
-        Log.d("hct","position = "+position);
+
         /**
          * 因为此方法会在滑动的时候不停的调用,所以这里设置一个临时的变量来控制
          */
@@ -167,7 +167,6 @@ public class LeftPickerView extends ScrollView {
             int size = mTextGroup.getChildCount();
             for (int i = 0; i < size; i++) {
                 if (position  == i) {
-                    Log.d("hct","position  == i"+position);
                     /**
                      * 这里写空调温度的逻辑
                      */
@@ -177,8 +176,6 @@ public class LeftPickerView extends ScrollView {
             }
         }
         tempPosition = position;
-        Log.d("hct","tempPosition = "+tempPosition);
-
     }
 
     @Override
@@ -252,7 +249,6 @@ public class LeftPickerView extends ScrollView {
         post(new Runnable() {
             @Override
             public void run() {
-                Log.d("hct","289position = "+ LeftPickerView.this.position * mTextHeight);
                 smoothScrollTo(0, LeftPickerView.this.position * mTextHeight);
             }
         });

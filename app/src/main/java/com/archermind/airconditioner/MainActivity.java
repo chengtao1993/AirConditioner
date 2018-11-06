@@ -3,6 +3,7 @@ package com.archermind.airconditioner;
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
             btnRightAcTemperatureUp,btnRightAcTemperatureDown,
             btnLeftSeatHeat,btnLeftSeatVentilation,
             btnRightSeatHeat,btnRightSeatVentilation,
-            btnAuto,btnAutoOff;
+            btnAuto,btnAutoOff,
+            btnReduceBlowingRate,btnIncreaseBlowingRate;
+
            private BlowViewItem btnBlowToTheHead,btnBlowToTheWindow,btnBlowToTheFoot;
     private LeftPickerView aCLeftPickerView;
     private  RightPickerView aCRightPickerView;
@@ -38,6 +41,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static int RIGHT_SEAT_HEAT_ICON_INDEX = 1;
     private static int RIGHT_SEAT_ENTILATION_ICON_INDEX = 1;
     private AnimationDrawable blowHeadAnimation,blowWindowAnimation,blowFootAnimation;
+    private ImageView seekbarBlowingRate;
+    private static int[] seekbarBlowingRateDrawables = {R.drawable.fengliang_a,R.drawable.fengliang_b,R.drawable.fengliang_c,
+            R.drawable.fengliang_d,R.drawable.fengliang_e,R.drawable.fengliang_f,R.drawable.fengliang_g,R.drawable.fengliang_h,
+            R.drawable.fengliang_i};
+    private static int  SEEKBAR_BLOWINGRATE_INDEX = 0;
+    private static float x1,x2;
+
 
 
 
@@ -79,6 +89,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         blowWindowAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.blow_window_animation);
         blowFootAnimation = (AnimationDrawable) getResources().getDrawable(R.drawable.blow_foot_animation);
 
+        btnReduceBlowingRate = findViewById(R.id.btn_reduce_blowing_rate);
+        btnIncreaseBlowingRate = findViewById(R.id.btn_increase_blowing_rate);
+
+        seekbarBlowingRate = findViewById(R.id.seekbar_blowing_rate);
+
         btnClose.setOnClickListener(this);
         btnAc.setOnClickListener(this);
         btnXunhuan.setOnClickListener(this);
@@ -103,8 +118,40 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnBlowToTheWindow.setOnClickListener(this);
         btnBlowToTheFoot.setOnClickListener(this);
 
+        btnReduceBlowingRate.setOnClickListener(this);
+        btnIncreaseBlowingRate.setOnClickListener(this);
 
+        seekbarBlowingRate.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        x2 =event.getX();
+                        float a = Math.abs(x2-x1)/seekbarBlowingRate.getWidth();
+                        if(x2>x1){
+                            if (SEEKBAR_BLOWINGRATE_INDEX<seekbarBlowingRateDrawables.length-1){
+                                SEEKBAR_BLOWINGRATE_INDEX++;
+                            }
+
+                        }else{
+                            if(SEEKBAR_BLOWINGRATE_INDEX>=1){
+                                SEEKBAR_BLOWINGRATE_INDEX--;
+                            }
+
+                        }
+                        seekbarBlowingRate.setBackgroundResource(seekbarBlowingRateDrawables[SEEKBAR_BLOWINGRATE_INDEX]);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
+                }
+
+                return true;
+            }
+        });
         /**
          * 初始化空调温度
          */
@@ -258,6 +305,19 @@ public class MainActivity extends Activity implements View.OnClickListener{
                    btnBlowToTheFoot.setBackground(blowFootAnimation);
                    blowFootAnimation.start();
                }
+                break;
+            case R.id.btn_reduce_blowing_rate:
+                if(SEEKBAR_BLOWINGRATE_INDEX>=1){
+                    SEEKBAR_BLOWINGRATE_INDEX--;
+                    seekbarBlowingRate.setBackgroundResource(seekbarBlowingRateDrawables[SEEKBAR_BLOWINGRATE_INDEX]);
+                }
+                break;
+            case R.id.btn_increase_blowing_rate:
+                if (SEEKBAR_BLOWINGRATE_INDEX<seekbarBlowingRateDrawables.length-1){
+                    SEEKBAR_BLOWINGRATE_INDEX++;
+                    seekbarBlowingRate.setBackgroundResource(seekbarBlowingRateDrawables[SEEKBAR_BLOWINGRATE_INDEX]);
+                }
+
                 break;
         }
     }
